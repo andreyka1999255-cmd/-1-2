@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор квадратных уравнений</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 420px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            color: #222;
+        }
+
+        .equation-display {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding: 12px;
+            background: #f3f4f6;
+            border-radius: 10px;
+            color: #222;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        input {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #667eea;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5a67d8;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 12px;
+            background: #eefbf3;
+            border-left: 5px solid #22c55e;
+            color: #222;
+        }
+
+        .error {
+            background: #fff1f2;
+            border-left: 5px solid #ef4444;
+        }
+
+        p {
+            margin: 8px 0;
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Квадратное уравнение</h1>
+
+        <div class="equation-display">
+            {% if a or b or c %}
+                {{ a if a else '?' }}x² + {{ b if b else '?' }}x + {{ c if c else '?' }} = 0
+            {% else %}
+                ax² + bx + c = 0
+            {% endif %}
+        </div>
+
+        <form method="post">
+            <input type="text" name="a" value="{{ a }}" placeholder="Например: 1" required>
+            <input type="text" name="b" value="{{ b }}" placeholder="Например: -5" required>
+            <input type="text" name="c" value="{{ c }}" placeholder="Например: 6" required>
+            <button type="submit">Найти корни</button>
+        </form>
+
+        {% if error %}
+            <div class="result error">
+                <h3>Ошибка</h3>
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+
+        {% if result %}
+            <div class="result">
+                <p>Дискриминант: D = {{ result.discriminant }}</p>
+
+                {% if result.type == "two_roots" %}
+                    <p>x₁ = {{ result.x1 }}</p>
+                    <p>x₂ = {{ result.x2 }}</p>
+                {% elif result.type == "one_root" %}
+                    <p>x = {{ result.x }}</p>
+                {% elif result.type == "complex_roots" %}
+                    <p>x₁ = {{ result.x1 }}</p>
+                    <p>x₂ = {{ result.x2 }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
