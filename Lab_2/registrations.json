@@ -1,0 +1,34 @@
+[
+  {
+    "user_id": 5957431902,
+    "username": null,
+    "full_name": "Никитин Андрей Сергеевич",
+    "race_type": "10km",
+    "race_label": "🏃 10 км (полупрофессиональный)",
+    "registered_at": "2026-02-23 22:06:39"
+  },
+  {
+    "user_id": 5957431902,
+    "username": null,
+    "full_name": "Иванов Олег Валерьевич",
+    "race_type": "42km",
+    "race_label": "🏆 42 км (марафон)",
+    "registered_at": "2026-02-23 22:10:29"
+  },
+  {
+    "user_id": 5957431902,
+    "username": null,
+    "full_name": "Никитин Андрей Сергеевич",
+    "race_type": "21km",
+    "race_label": "🥇 21 км (полумарафон)",
+    "registered_at": "2026-03-16 21:29:18"
+  },
+  {
+    "user_id": 1469499156,
+    "username": null,
+    "full_name": "Задвинский Владислав Викторович",
+    "race_type": "42km",
+    "race_label": "🏆 42 км (марафон)",
+    "registered_at": "2026-03-17 11:51:25"
+  }
+]
